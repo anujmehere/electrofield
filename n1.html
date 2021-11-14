@@ -1,0 +1,45 @@
+<!-- <script>
+	const filter = { usbVendorId: 0x2341 };
+const port = await navigator.serial.requestPort({ filters: [filter] });
+const port = await navigator.serial.requestPort();
+</script>
+
+<button id="connect">Connect</button>
+<script>
+	const connectButton = document.getElementById("connect");
+connectButton.addEventListener('click', () => {
+  try {
+    const port = await navigator.serial.requestPort();
+    // Continue connecting to the device attached to |port|.
+  } catch (e) {
+    // The prompt has been dismissed without selecting a device.
+  }
+});
+</script> -->
+
+
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#show").click(function(){
+      $("#click").slideToggle();
+      if($("#show").val() == 'Show')    {
+        $("#show").val('Hide');
+      }else {
+        $("#show").val('Show');
+      }
+  });
+});
+</script>
+<style>
+#click{
+display:none;}
+</style>
+</head>
+<body>
+<input type="button" value="Show" id="show" />
+<p id="click">This is the riddle answer.</p>
+</body>
+</html>

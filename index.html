@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="index.js"></script>
+    <title>Token Start</title>
+  </head>
+  <body style="background-color: blanchedalmond;">
+
+      
+    
+    <div class="card mb-3">
+        
+        <div class="card-body" style="background-color: rgb(233, 236, 236);">
+          <h5 class="card-title">Bank Token</h5>
+          
+        </div>
+      </div>
+      
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+            <div class="form-check form-switch"  style="padding-left: 4em;">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" >
+                <label class="form-check-label" for="flexSwitchCheckDefault">Bluetooth</label>
+              </div>
+              <div class="form-check form-switch" style="padding-left: 4em;">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Wifi</label>
+              </div>
+              <div class="form-check form-switch" style="padding-left:4em; padding-right: 1em;">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Port</label>
+              </div>
+          </nav>
+          
+          <script>
+            // In your Javascript (external .js resource or <script> tag)
+            $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+            });
+          </script>
+          
+        <nav>
+            <span class="d-flex" style="background-color: beige; padding: 1rem;">
+              <select class="js-example-basic-single me-2  form-control" name=" Select Serial Port">
+                <option value="1">Serial Port 1</option>
+                  
+                <option value="2">Serial Port 2</option>
+              </select>
+                <!-- <input class="form-control me-2 " type="search" placeholder="Connecteion Via Path" aria-label="Search">
+                 -->
+                 <!-- <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"  aria-expanded="false">
+                    Select Serial Port
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                  </ul>
+                </div> -->
+                
+          
+                <button class="btn btn-outline-success" type="submit" id="show">Connect</button>
+                
+              </span>
+        </nav>
+
+        <div class="container">
+          <div class="row row-cols-2" >
+            <div class="col" style="padding-right: 0; padding-left: 0;">
+              <div class="card">
+              <div class="card-body">
+                
+                <span class="d-flex">
+                  <input class="form-control me-2" type="number"  id="tkn1" name="tkn1" placeholder="123" maxlength="3" value="1" style="min-width: 3em; text-align: end;">
+                  
+                  <button id="clrtkn1" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn1').value = '0'" >Clear Token1</button>
+                  </span>
+              </div>
+            </div>
+          </div>
+            <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+              <div class="card-body">
+                
+                <span class="d-flex">
+                  <input class="form-control me-2" type="number"  id="tkn2" name="tkn2" placeholder="123" maxlength="3" value="2" style="min-width: 3em; text-align: end;">
+                  
+                  <button id="clrtkn2" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn2').value = '0'">Clear Token2</button>
+                  </span>
+              </div>
+            </div>
+          </div>
+            <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+              <div class="card-body">
+                
+                <span class="d-flex">
+                  <input class="form-control me-2" type="number"  id="tkn3" name="tkn3" placeholder="123" maxlength="3" value="3" style="min-width: 3em; text-align: end;">
+                  
+                  <button id="clrtkn3" class="btn btn-primary btn-sm"  onclick="document.getElementById('tkn3').value = '0'">Clear Token3</button>
+                  </span>
+              </div>
+            </div>
+          </div>
+            <div class="col" style="padding-right: 0; padding-left: 0;">
+              <div class="card">
+              <div class="card-body">
+               
+                <span class="d-flex">
+                  <input class="form-control me-2" type="number"  id="tkn4" name="tkn4" placeholder="123" maxlength="3" value="4" style="min-width: 3em; text-align: end;">
+                  
+                  <button id="clrtkn4" class="btn btn-primary btn-sm"  onclick="document.getElementById('tkn4').value = '0'">Clear Token4</button>
+                  </span>
+              </div>
+            </div>
+          </div>
+          <div class="col" style="padding-right: 0; padding-left: 0;">
+            <div class="card">
+            <div class="card-body">
+
+              <span class="d-flex">
+                <input class="form-control me-2" type="number"  id="tkn5" name="tkn5" placeholder="123" maxlength="3" value="5" style="min-width: 3em; text-align: end;">
+                
+                <button id="clrtkn5" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn5').value = '0'">Clear Token5</button>
+                </span>
+            </div>
+          </div>
+        </div>
+          <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+            <div class="card-body">
+
+              <span class="d-flex">
+                <input class="form-control me-2" type="number"  id="tkn6" name="tkn6" placeholder="123" maxlength="3" value="6" style="min-width: 3em; text-align: end;">
+                
+                <button id="clrtkn6" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn6').value = '0'">Clear Token6</button>
+                </span>
+            </div>
+          </div>
+        </div>
+          <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+            <div class="card-body">
+
+              <span class="d-flex">
+                <input class="form-control me-2" type="number"  id="tkn7" name="tkn7" placeholder="123" maxlength="3" value="7" style="min-width: 3em; text-align: end;">
+                
+                <button id="clrtkn7" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn7').value = '0'">Clear Token7</button>
+                </span>
+            </div>
+          </div>
+        </div>
+          <div class="col" style="padding-right: 0; padding-left: 0;">
+            <div class="card">
+            <div class="card-body">
+
+              <span class="d-flex">
+                <input class="form-control me-2" type="number"  id="tkn8" name="tkn8" placeholder="123" maxlength="3" value="8" style="min-width: 3em; text-align: end;">
+                
+                <button id="clrtkn8" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn8').value = '0'">Clear Token8</button>
+                </span>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <br>
+        
+        <nav>
+          <p class="d-flex" style="background-color: beige; padding: 1rem;">
+              <input class="form-control me-2" type="number" id="newtkn" name="newtkn" maxlength="3" value="0" onfocus="this.value=''" aria-label="Search">
+              <button id="sendtkn"  name="sendtkn" onclick="movetoken()" class="btn btn-outline-success" type="submit">SEND_TOKEN</button>
+          </p>
+      </nav>
+      <div class="row row-cols-2" >
+      <div class="col">
+        <button id="clralltkn" name="clralltkn" onclick="clearalltoken()"  class="btn btn-warning " type="button" style="width:100%;">Clear All Tokens</button>
+     
+      </div>
+      <div class="col">
+        <button id="clralltkn" name="clralltkn" onclick="clearalltoken()"  class="btn btn-danger" type="button" style="width: 100%;">Exit</button>
+     
+      </div>
+      </div>
+      
+       
+      
+
+      <!--Connect Disconnect Button-->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+  $("#show").click(function(){
+      if ($(this).text() == "Connect")
+       $(this).text("Disconnect")
+       
+
+    else
+       $(this).text("Connect");
+      
+         
+  });
+});
+
+</script>
+     
+       
+
+</body>
+          
+        
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
