@@ -1,7 +1,7 @@
 {
     "name": "banktoken",
     "short_name": "token",
-    "start_url": "index.html",
+    "start_url": "login.html",
     "display": "standalone",
     "background_color": "#182034",
     "theme_color": "#3a4764",
