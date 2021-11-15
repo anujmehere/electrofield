@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
+    
     <!-- Bootstrap CSS -->
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <link rel="apple-touch-icon" href="apple-icon-180.png">
@@ -15,7 +15,7 @@
     <title>Token Start</title>
     <link rel="manifest" href="./manifest.json">
   </head>
-  <body style="background-color: blanchedalmond;">
+  <body style="background-color: blanchedalmond;" onload="myFunction()">
 
       
     
@@ -25,8 +25,9 @@
           <h5 class="card-title">Bank Token</h5>
           
         </div>
+        
       </div>
-      
+     
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" >
             <div class="form-check form-switch"  style="padding-left: 4em;">
@@ -37,20 +38,17 @@
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Wifi</label>
               </div>
+
               <div class="form-check form-switch" style="padding-left:4em; padding-right: 1em;">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Port</label>
               </div>
-          </nav>
-          
-          
-          <!-- <script>
-            // In your Javascript (external .js resource or <script> tag)
-            $(document).ready(function() {
-            $('.js-example-basic-single').select2();
-            });
-          </script> -->
-          
+              <!--Device Type-->
+              
+              <input id="dtype" value="0" readonly>
+              
+          </nav>  
+         
         <nav>
             <span class="d-flex" style="background-color: beige; padding: 1rem;">
               <select class="form-select" aria-label="Default select example">
@@ -60,18 +58,7 @@
                 <option value="3">Port 3</option>
               </select>
               
-                <!-- <input class="form-control me-2 " type="search" placeholder="Connecteion Via Path" aria-label="Search">
-                 -->
-                 <!-- <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"  aria-expanded="false">
-                    Select Serial Port
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
-                  </ul>
-                </div> -->
+
                 
           
                 <button class="btn btn-outline-success" type="submit" id="show">Connect</button>
@@ -183,6 +170,8 @@
               <button id="sendtkn"  name="sendtkn" onclick="movetoken()" class="btn btn-outline-success" type="submit">SEND_TOKEN</button>
           </p>
       </nav>
+     
+
       <div class="row row-cols-2" >
       <div class="col">
         <button id="clralltkn" name="clralltkn" onclick="clearalltoken()"  class="btn btn-warning " type="button" style="width:100%;">Clear All Tokens</button>

@@ -78,6 +78,7 @@ window.addEventListener("load", ()=>{
 const loader = document.querySelector(".loader")
   loader.classList.add("hidden")
 
+
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("sw.js")
@@ -88,3 +89,18 @@ const loader = document.querySelector(".loader")
   }
   
 })
+
+function myFunction() {
+  let details = navigator.userAgent;
+  let regexp = /android|iphone|kindle|ipad/i;
+  let isMobileDevice = regexp.test(details);
+  if (isMobileDevice) {
+    document.getElementById("dtype").value="Mobile";
+  } 
+  else {
+    document.getElementById("dtype").value="Desktop";
+    }
+    
+  }
+
+  
