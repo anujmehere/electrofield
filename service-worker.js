@@ -1,34 +1,32 @@
-/*
-Copyright 2015, 2019, 2020, 2021 Google LLC. All Rights Reserved.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
-
-// Incrementing OFFLINE_VERSION will kick off the install event and force
-// previously cached resources to be updated from the network.
-// This variable is intentionally declared and unused.
-// Add a comment for your linter if you want:
-// eslint-disable-next-line no-unused-vars
-const OFFLINE_VERSION = 1;
-const CACHE_NAME = "offline";
+const CACHE_NAME = "banktoken-v1";
 // Customize this with a different URL if needed.
-const OFFLINE_URL = "offline.html";
+const appShellFiles = [
+  '/webtoken/ble.html',
+  '/webtoken/index.html',
+  '/webtoken/index.js',
+  '/webtoken/login.css',
+  '/webtoken/login.html',
+  '/webtoken/manifest-icon-192.png',
+  '/webtoken/manifest-icon-512.png',
+  '/webtoken/apple-icon-180.png',
+  '/webtoken/images/favicon-32x32.png',
+  '/webtoken/images/icon.png',
+  '/webtoken/images/profile.jpeg',
+  
+];
+const contentToCache = appShellFiles;
 
 self.addEventListener("install", (event) => {
+  console.log('[Service Worker] Install');
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
       // Setting {cache: 'reload'} in the new request will ensure that the
       // response isn't fulfilled from the HTTP cache; i.e., it will be from
       // the network.
-      await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+      console.log('[Service Worker] Caching all: app shell and content');
+      await cache.addAll(contentToCache);
+      //await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
     })()
   );
   // Force the waiting service worker to become the active service worker.
@@ -53,33 +51,44 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   // We only want to call event.respondWith() if this is a navigation request
   // for an HTML page.
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      (async () => {
-        try {
-          // First, try to use the navigation preload response if it's supported.
-          const preloadResponse = await event.preloadResponse;
-          if (preloadResponse) {
-            return preloadResponse;
-          }
+  //if (event.request.mode === "navigate") {
+  //   event.respondWith(
+  //     (async () => {
+  //       try {
+  //         // First, try to use the navigation preload response if it's supported.
+  //         const preloadResponse = await event.preloadResponse;
+  //         if (preloadResponse) {
+  //           return preloadResponse;
+  //         }
 
-          // Always try the network first.
-          const networkResponse = await fetch(event.request);
-          return networkResponse;
-        } catch (error) {
-          // catch is only triggered if an exception is thrown, which is likely
-          // due to a network error.
-          // If fetch() returns a valid HTTP response with a response code in
-          // the 4xx or 5xx range, the catch() will NOT be called.
-          console.log("Fetch failed; returning offline page instead.", error);
+  //         // Always try the network first.
+  //         const networkResponse = await fetch(event.request);
+  //         return networkResponse;
+  //       } catch (error) {
+  //         // catch is only triggered if an exception is thrown, which is likely
+  //         // due to a network error.
+  //         // If fetch() returns a valid HTTP response with a response code in
+  //         // the 4xx or 5xx range, the catch() will NOT be called.
+  //         console.log("Fetch failed; returning offline version instead.", error);
 
-          const cache = await caches.open(CACHE_NAME);
-          const cachedResponse = await cache.match(OFFLINE_URL);
-          return cachedResponse;
-        }
-      })()
-    );
-  }
+  //         const cache = await caches.open(CACHE_NAME);
+  //         const cachedResponse = await caches.open(CACHE_NAME);
+  //         return cachedResponse;
+  //       }
+  //     })()
+  //   );
+  // }
+
+  event.respondWith((async () => {
+    const r = await caches.match(event.request);
+    console.log(`[Service Worker] Fetching resource: ${event.request.url}`);
+    if (r) return r;
+    const response = await fetch(event.request);
+    const cache = await caches.open(CACHE_NAME);
+    console.log(`[Service Worker] Caching new resource: ${event.request.url}`);
+    cache.put(event.request, response.clone());
+    return response;
+  })());
 
   // If our if() condition is false, then this fetch handler won't intercept the
   // request. If there are any other fetch handlers registered, they will get a
