@@ -1,9 +1,8 @@
 const CACHE_NAME = "banktoken-v1";
 // Customize this with a different URL if needed.
 const appShellFiles = [
-  './ble.html',
   './index.html',
-  './index.js',
+  './js/index.js',
   './login.css',
   './login.html',
   './manifest-icon-192.png',
@@ -13,7 +12,7 @@ const appShellFiles = [
   './images/icon.png',
   './images/profile.jpeg',
   './bs513.css',
-  './jquery1102.js'
+  './js/jquery1102.js'
   
 ];
 const contentToCache = appShellFiles;

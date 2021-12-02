@@ -2,11 +2,11 @@ const CACHE_NAME = "water-1";
 // Customize this with a different URL if needed.
 const appShellFiles = [
   './waterlevel2.html',
-  './login.css',
   './waterlogin.html',
   './js/bs502.js',
   './js/serial.js',
   './css/bs502.css',
+  './css/login.css',
   './css/water.css',
   './manifest-icon-192.png',
   './manifest-icon-512.png',
