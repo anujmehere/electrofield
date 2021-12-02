@@ -1,7 +1,7 @@
 {
     "name": "LDS Settings",
     "short_name": "LDS",
-    "start_url": "/lds/ldslogin.html",
+    "start_url": "/electrofield/lds/ldslogin.html",
     "display": "standalone",
     "background_color": "#182034",
     "theme_color": "#3a4764",

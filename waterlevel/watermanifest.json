@@ -1,7 +1,7 @@
 {
     "name": "Water Level Pump Contoller",
     "short_name": "Pump",
-    "start_url": "/water/waterlogin.html",
+    "start_url": "/electrofield/water/waterlogin.html",
     "display": "standalone",
     "background_color": "#182034",
     "theme_color": "#3a4764",

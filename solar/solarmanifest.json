@@ -1,7 +1,7 @@
 {
     "name": "Solar Contoller",
     "short_name": "Solar",
-    "start_url": "/solar/solarlogin.html",
+    "start_url": "/electrofield/solar/solarlogin.html",
     "display": "standalone",
     "background_color": "#182034",
     "theme_color": "#3a4764",
