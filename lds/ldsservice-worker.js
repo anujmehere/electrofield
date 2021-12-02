@@ -7,6 +7,7 @@ const appShellFiles = [
   './js/serial.js',
   './css/bs502.css',
   './css/bs513.css',
+  './css/login.css',
   './manifest-icon-192.png',
   './manifest-icon-512.png',
   './apple-icon-180.png',
