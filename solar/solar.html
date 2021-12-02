@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    .row-cols-3 {
+      padding: 0.3em;
+    }
+    .row-cols-2 {
+      padding: 0.3em;
+    }
+    .col button {
+      min-width: 1.5em;
+    }
+  </style>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="./css/bs502.css" rel="stylesheet"/>
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  
+      
+    
+    <script src="./index.js"></script>
+ 
+    <link rel="manifest" href="./solarmanifest.json">
+
+    <title>Solar Lamp Settings</title>
+  </head>
+  <body>
+    <div class="card mb-3">
+      <div class="card-body" style="background-color: rgb(233, 236, 236)">
+        <h5 class="card-title">Solar Lamp Settings</h5>
+      </div>
+    </div>
+    <nav>
+      
+      <span class="d-flex" style="background-color: beige; padding: 1rem">
+        <!--   <input type="radi-datetime-localo" id="html" name="fav_language" value="HTML" />  
+        <label for="html">Lamp On</label><br />
+          <input type="radi-datetime-localo" id="css" name="fav_language" value="CSS" />  
+        <label for="css">Manual On</label><br /> -->
+        <div class="form-check form-switch"  >
+          <input class="form-check-input" type="chec-datetime-localkbox" role="switch" id="flexSwitchCheckDefault" >
+          <label class="form-check-label" for="flexSwitchCheckDefault">Bluetooth</label>
+        </div>
+        <div class="form-check form-switch" >
+          <input class="form-check-input" type="chec-datetime-localkbox" role="switch" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Wifi</label>
+        </div>
+         
+
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Select Serial Port</option>
+          <option value="1" style="max-width: fit-content;">Port 1</option>
+          <option value="2">Port 2</option>
+          <option value="3">Port 3</option>
+        </select>
+          <button class="btn btn-secondary" id="connect-to-serial">Connect</button>
+      </span>
+    </nav>
+    <div class="row" style="background-color: darkseagreen;">
+      <div class="col-sm-6" >
+        <div class="card" style="background-color: rgb(230, 243, 116);">
+          <div class="card-body">
+            <div class="row row-cols-3">
+
+              <div class="col">
+                <p class="card-text">Lamp Type</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 254);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Lamp Mode</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Lamp Volt/Load</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">PIR Sensor</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Dimming Mode</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Dimming Type</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Dim Intensity</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Dim Start Time</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Dim End Time</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Battery Type</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Battery LowCut</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+            <div class="row row-cols-3">
+              <div class="col">
+                <p class="card-text">Battery HighCut</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="text"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                  readonly
+                />
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card" style="background-color: rgb(229, 238, 148);">
+          <div class="card-body">
+            <div class="row row-cols-2" style="padding-bottom: 1em">
+              <div class="col">
+                <p class="card-text">On Time</p>
+              </div>
+              <div class="col">
+                <p class="card-text">Off Time</p>
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+            <div class="row row-cols-2">
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control me-2"
+                  type="datetime-local"
+                  style="
+                    min-width: 3em;
+                    text-align: end;
+                    background-color: rgb(255, 255, 255);
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav style="background-color: darksalmon; padding: 1.5em">
+      <div class="row row-cols-4">
+        <div class="col">
+          <button class="btn btn-info" type="butt-datetime-localon" style="width: 100%">
+            Read Settings
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn btn-danger" type="butt-datetime-localon" style="width: 100%">
+            Clear All
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary" type="butt-datetime-localon" style="width: 100%">
+            Display All
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn btn-warning" type="butt-datetime-localon" style="width: 100%">
+            Exit
+          </button>
+        </div>
+      </div>
+    </nav>
+    
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="./js/bs502.js"
+    ></script>
+    <script src="./js/serial.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("solarservice-worker.js");
+        }
+      });
+      </script>
+    
+  </body>
+</html>
+<script>
+  const serialLEDController = new SerialLEDController();
+  const connect = document.getElementById('connect-to-serial');
+  const getSerialMessages = document.getElementById('get-serial-messages');
+  const messageForm = document.getElementById('message-form');
+  const messageInput = document.getElementById('message-input');
+  const submitButton = document.getElementById('submit-button');
+  const serialMessagesContainer = document.getElementById('serial-messages-container');
+
+  connect.addEventListener('pointerdown', () => {
+    serialLEDController.init();
+
+    serialMessagesContainer.removeAttribute('disabled');
+    messageInput.removeAttribute('disabled');
+    submitButton.removeAttribute('disabled');
+  });
+
+  messageForm.addEventListener('submit', event => {
+    event.preventDefault();
+    serialLEDController.write(event.target.firstElementChild.value);
+    getSerialMessage();
+  });
+
+  getSerialMessages.addEventListener('pointerdown', async () => {
+    getSerialMessage();
+  });
+
+  async function getSerialMessage() {
+    serialMessagesContainer.innerText += await serialLEDController.read() + '\n';
+  }
+
+</script>

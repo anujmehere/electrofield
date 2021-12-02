@@ -1,18 +1,18 @@
-const CACHE_NAME = "banktoken-v1";
+const CACHE_NAME = "lds-1";
 // Customize this with a different URL if needed.
 const appShellFiles = [
-  '/webtoken/ble.html',
-  '/webtoken/index.html',
-  '/webtoken/index.js',
-  '/webtoken/login.css',
-  '/webtoken/login.html',
-  '/webtoken/manifest-icon-192.png',
-  '/webtoken/manifest-icon-512.png',
-  '/webtoken/apple-icon-180.png',
-  '/webtoken/images/favicon-32x32.png',
-  '/webtoken/images/icon.png',
-  '/webtoken/images/profile.jpeg',
-  
+  './lds.html',
+  './ldslogin.html',
+  './js/bs502.js',
+  './js/serial.js',
+  './css/bs502.css',
+  './css/bs513.css',
+  './manifest-icon-192.png',
+  './manifest-icon-512.png',
+  './apple-icon-180.png',
+  './images/favicon-32x32.png',
+  './images/icon.png',
+  './images/profile.jpeg',
 ];
 const contentToCache = appShellFiles;
 
@@ -26,7 +26,7 @@ self.addEventListener("install", (event) => {
       // the network.
       console.log('[Service Worker] Caching all: app shell and content');
       await cache.addAll(contentToCache);
-      //await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+      
     })()
   );
   // Force the waiting service worker to become the active service worker.
@@ -96,3 +96,5 @@ self.addEventListener("fetch", (event) => {
   // event.respondWith(), the request will be handled by the browser as if there
   // were no service worker involvement.
 });
+
+

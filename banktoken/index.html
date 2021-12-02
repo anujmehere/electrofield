@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="./css/bs513.css">
+    
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+    <script src="./js/index.js"></script>
+   
+    <!-- <script src="./index.js"></script> -->
+    <title>Token Start</title>
+    <link rel="manifest" href="./manifest.json">
+  </head>
+  <body style="background-color: blanchedalmond;" onload="myFunction()">
+
+      
+    
+    
+       
+      
+    <style>
+      .port {
+          display: block;
+      }
+      
+      @media all and (max-width: 768px){
+      .port {
+          display: none;
+      }
+      }
+      </style>
+          
+          <div class="card mb-3">
+              
+              <div class="card-body" style="background-color: rgb(233, 236, 236);">
+                <h5 class="card-title">Bank Token</h5>
+      
+                
+              </div>
+              
+            </div>
+           
+            <div class="container">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+                  <div class="form-check form-switch"  style="padding-left: 4em;">
+                      <input class="form-check-input" type="checkbox" onclick="togglediv('bluetooth')" role="switch" id="connect" >
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Bluetooth</label>
+                    </div>
+                    <script>
+                      document.getElementById('connect').id = 'disconnect';
+                      document.getElementById('disconnect').id = 'connect';
+      
+                    </script>
+                    <div class="form-check form-switch" style="padding-left: 4em;">
+                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Wifi</label>
+                    </div>
+      
+                   
+                    <div class="port form-check form-switch  .d-sm-none .d-md-block"  style="padding-left:4em; padding-right: 1em;">
+                      <input class="form-check-input" role="switch" id="flexSwitchCheckDefault" type="checkbox" onclick="togglesdiv('item','port')">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Port</label>
+                      <span class="slider" ></span>
+                    </div>
+                    <!--Device Type-->  
+                </nav>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  Hey <input id="dtype" value="0" readonly><div id="terminal" class="terminal"></div>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>  
+                <div id="item" style="display: none;">
+                  <nav>
+                    <span class="d-flex" style="background-color: beige; padding: 1rem;">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Select Serial Port</option>
+                        <option value="1" style="max-width: fit-content;">Port 1</option>
+                        <option value="2">Port 2</option>
+                        <option value="3">Port 3</option>
+                      </select>
+                        <button class="btn btn-primary" id="connect-to-serial">Connect</button>
+                      </span>
+                </nav>
+                </div>
+               
+      
+              
+             
+              <div class="container">
+                <div class="row row-cols-2" >
+                  <div class="col" style="padding-right: 0; padding-left: 0;">
+                    <div class="card">
+                    <div class="card-body">
+                      
+                      <span class="d-flex">
+                        <input class="form-control me-2" type="number"  id="tkn1" name="tkn1" placeholder="123" maxlength="3" value="1" style="min-width: 3em; text-align: end; background-color: rgb(255, 255, 255);" readonly>
+                        
+                        <button id="clrtkn1" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn1').value = '0'" >Clear Token1</button>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+                    <div class="card-body">
+                      
+                      <span class="d-flex">
+                        <input class="form-control me-2" type="number"  id="tkn2" name="tkn2" placeholder="123" maxlength="3" value="2" style="min-width: 3em; text-align: end; background-color: rgb(255, 255, 255);" readonly>
+                        
+                        <button id="clrtkn2" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn2').value = '0'">Clear Token2</button>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+                    <div class="card-body">
+                      
+                      <span class="d-flex">
+                        <input class="form-control me-2" type="number"  id="tkn3" name="tkn3" placeholder="123" maxlength="3" value="3" style="min-width: 3em; text-align: end; background-color: rgb(255, 255, 255);" readonly>
+                        
+                        <button id="clrtkn3" class="btn btn-primary btn-sm"  onclick="document.getElementById('tkn3').value = '0'">Clear Token3</button>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col" style="padding-right: 0; padding-left: 0;">
+                    <div class="card">
+                    <div class="card-body">
+                     
+                      <span class="d-flex">
+                        <input class="form-control me-2" type="number"  id="tkn4" name="tkn4" placeholder="123" maxlength="3" value="4" style="min-width: 3em; text-align: end; background-color: rgb(255, 255, 255);" readonly>
+                        
+                        <button id="clrtkn4" class="btn btn-primary btn-sm"  onclick="document.getElementById('tkn4').value = '0'">Clear Token4</button>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col" style="padding-right: 0; padding-left: 0;">
+                  <div class="card">
+                  <div class="card-body">
+      
+                    <span class="d-flex">
+                      <input class="form-control me-2" type="number"  id="tkn5" name="tkn5" placeholder="123" maxlength="3" value="5" style="min-width: 3em; text-align: end; background-color: rgb(255, 255, 255);" readonly>
+                      
+                      <button id="clrtkn5" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn5').value = '0'">Clear Token5</button>
+                      </span>
+                  </div>
+                </div>
+              </div>
+                <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+                  <div class="card-body">
+      
+                    <span class="d-flex">
+                      <input class="form-control me-2" type="number"  id="tkn6" name="tkn6" placeholder="123" maxlength="3" value="6" style="min-width: 3em; text-align: end; background-color: rgb(255, 255, 255);" readonly>
+                      
+                      <button id="clrtkn6" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn6').value = '0'">Clear Token6</button>
+                      </span>
+                  </div>
+                </div>
+              </div>
+                <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+                  <div class="card-body">
+      
+                    <span class="d-flex">
+                      <input class="form-control me-2" type="number"  id="tkn7" name="tkn7" placeholder="123" maxlength="3" value="7" style="min-width: 3em; text-align: end; background-color: rgb(255, 255, 255);" readonly>
+                      
+                      <button id="clrtkn7" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn7').value = '0'">Clear Token7</button>
+                      </span>
+                  </div>
+                </div>
+              </div>
+                <div class="col" style="padding-right: 0; padding-left: 0;">
+                  <div class="card">
+                  <div class="card-body">
+      
+                    <span class="d-flex">
+                      <input class="form-control me-2" type="number"  id="tkn8" name="tkn8" placeholder="123" maxlength="3" value="8" style="min-width: 3em; text-align: end; background-color: rgb(255, 255, 255);" readonly>
+                      
+                      <button id="clrtkn8" class="btn btn-primary btn-sm" onclick="document.getElementById('tkn8').value = '0'">Clear Token8</button>
+                      </span>
+                  </div>
+                </div>
+              </div>
+                </div>
+              </div>
+              <br>
+              <div id="bluetooth" style="display: none;">
+              <form id="send-form" class="send-form">
+      
+                <input id="input" type="text" aria-label="Input" autocomplete="off" style="background-color: white;" placeholder="Send Token">
+      
+                <button type="submit"  class="btn btn-primary btn-sm" aria-label="Send">
+                    Send Token
+                </button>
+      
+             </form>
+             </div>
+             <div id="port" style="display: none;">
+              <p class="d-flex" >
+                <input class="form-control " type="text" id="newtkn" name="newtkn" maxlength="3" value="0" onfocus="this.value=''" aria-label="Search" style="text-align: end; background-color: rgb(255, 255, 255);"> 
+                <button id="sendtkn"  name="sendtkn" onclick="movetoken1()" class="btn btn-primary btn-sm" type="submit">SEND_TOKEN</button>
+            </p>
+            <script>
+              function movetoken1()
+      {
+        document.getElementById("tkn1").value=document.getElementById("tkn2").value;
+        document.getElementById("tkn2").value=document.getElementById("tkn3").value;
+        document.getElementById("tkn3").value=document.getElementById("tkn4").value;
+        document.getElementById("tkn4").value=document.getElementById("tkn5").value;
+        document.getElementById("tkn5").value=document.getElementById("tkn6").value;
+        document.getElementById("tkn6").value=document.getElementById("tkn7").value;
+        document.getElementById("tkn7").value=document.getElementById("tkn8").value;
+        
+        document.getElementById("tkn8").value=document.getElementById("newtkn").value;
+        
+      }
+            </script>
+                
+      
+            </div>
+            <br>
+            
+           
+      
+            <div class="row row-cols-2" >
+            <div class="col">
+              <button id="clralltkn" name="clralltkn" onclick="clearalltoken()"  class="btn btn-warning " type="button" style="width:100%;">Clear_All_Tokens</button>
+           
+            </div>
+            <div class="col">
+              <a href="./login.html" style="color: white;"><button   class="btn btn-danger" type="button" style="width: 100%;">Exit</button></a>
+           
+            </div>
+            </div>
+            
+            <script src="./js/serial.js"></script>
+            
+      
+            <script src="./js/BluetoothTerminal.js"></script>
+            <script src="./js/main.js"></script>
+            <script src="./js/companion.js" data-service-worker="sw.js"></script>
+            
+      
+      
+            
+      
+            <!--Connect Disconnect Button-->
+            <script src="./jquery1102.js"></script>
+      
+           
+             
+      
+      </body>
+                
+              
+      
+          <!-- Optional JavaScript; choose one of the two! -->
+      
+          <!-- Option 1: Bootstrap Bundle with Popper -->
+          
+          <!-- Option 2: Separate Popper and Bootstrap JS -->
+          <!--
+          -->
+          
+          <script>
+          window.addEventListener("load", () => {
+            if ("serviceWorker" in navigator) {
+              navigator.serviceWorker.register("service-worker.js");
+            }
+          });
+          </script>
+          
+        </body>
+      </html>
+      
+      <script>
+        const serialLEDController = new SerialLEDController();
+        const connect = document.getElementById('connect-to-serial');
+        const getSerialMessages = document.getElementById('get-serial-messages');
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+        const submitButton = document.getElementById('submit-button');
+        const serialMessagesContainer = document.getElementById('serial-messages-container');
+      
+        connect.addEventListener('pointerdown', () => {
+          serialLEDController.init();
+      
+          serialMessagesContainer.removeAttribute('disabled');
+          messageInput.removeAttribute('disabled');
+          submitButton.removeAttribute('disabled');
+        });
+      
+        messageForm.addEventListener('submit', event => {
+          event.preventDefault();
+          serialLEDController.write(event.target.firstElementChild.value);
+          getSerialMessage();
+        });
+      
+        getSerialMessages.addEventListener('pointerdown', async () => {
+          getSerialMessage();
+        });
+      
+        async function getSerialMessage() {
+          serialMessagesContainer.innerText += await serialLEDController.read() + '\n';
+        }
+      
+      </script>
+      
+      
+      
+      
+      <script>
+        function togglediv(id) {
+          var div = document.getElementById(id);
+          div.style.display = div.style.display == "block" ? "none" : "block";
+      }
+      function togglesdiv(id,id1) {
+          var div = document.getElementById(id);
+          var div1 = document.getElementById(id1);
+          div.style.display = div.style.display == "block" ? "none" : "block";
+          div1.style.display = div1.style.display == "block" ? "none" : "block";
+      }
+      </script>

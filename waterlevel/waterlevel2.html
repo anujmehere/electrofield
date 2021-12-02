@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./css/bs502.css" rel="stylesheet" >
+    <title>Water Level Pump Controller</title>
+  </head>
+  <link href="./css/water.css" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+   
+
+    <link rel="manifest" href="./watermanifest.json">
+  
+  <body style="background-color: rgb(102, 163, 233);">
+    
+    <div class="card mb-3">
+        
+        <div class="card-body" style="background-color: black; color: white;">
+          <h5 class="card-title" >Water Level Pump Controller</h5>
+
+          
+        </div>
+        
+      </div>
+      
+      
+    
+      <script src="./js/serial.js"></script>
+<div class="container-fluid">
+    <div class="container">
+      
+      <nav>
+        <span class="d-flex" >
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select Serial Port</option>
+            <option value="1" style="max-width: fit-content;">Port 1</option>
+            <option value="2">Port 2</option>
+            <option value="3">Port 3</option>
+          </select>
+            <button class="btn btn-secondary" id="connect-to-serial">Connect</button>
+          </span>
+    </nav>
+    <div class="row" style="padding: 0;">
+      <div class="col-5" style="padding: 0;"><div class="card" >
+        <div class="card-body">
+
+
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Pump_ON</label>
+            </div> 
+
+        </div>
+      </div></div>
+      <div class="col-5" style="padding: 0;"><div class="card" >
+        <div class="card-body">
+
+
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Manual_ON</label>
+            </div> 
+
+        </div>
+      </div></div>
+      <div class="col-2" style="padding: 0;">     
+         <div class="card" style="padding: 0; margin: 0;" >
+      
+        <button type="button" class="btn btn-warning " style="min-height: 3.7em;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.5 2c-5.621 0-10.211 4.443-10.475 10h-3.025l5 6.625 5-6.625h-2.975c.257-3.351 3.06-6 6.475-6 3.584 0 6.5 2.916 6.5 6.5s-2.916 6.5-6.5 6.5c-1.863 0-3.542-.793-4.728-2.053l-2.427 3.216c1.877 1.754 4.389 2.837 7.155 2.837 5.79 0 10.5-4.71 10.5-10.5s-4.71-10.5-10.5-10.5z"/></svg></button>
+      
+   </div>
+  </div>
+    </div>
+     
+      <div class="row row-cols-2" style="margin-top: 0.2em;" >
+        <div class="col" style="padding:0">
+          <div class="card" style="padding: 0;">
+            <div class="card-body">
+              <h3 style="font-size: calc(1rem + .6vw);">Bottom Tank</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="padding:0">
+          <div class="card" style="padding: 0;">
+            <div class="card-body" >
+            <h3 style="font-size: calc(1rem + .6vw);">Top Tank</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="padding-right: 0; padding-left: 0;">
+          <div class="card">
+          <div class="card-body">
+            
+            <span class="d-flex">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault" >Upper Level</label>
+              </div>  
+            </span>
+          </div>
+        </div>
+      </div>
+        <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+          <div class="card-body">
+            
+            <span class="d-flex">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Upper Level</label>
+              </div>   
+            </span>
+          </div>
+        </div>
+      </div>
+        <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+          <div class="card-body">
+            
+            <span class="d-flex">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Middle Level</label>
+              </div>   
+            </span>
+          </div>
+        </div>
+      </div>
+        <div class="col" style="padding-right: 0; padding-left: 0;">
+          <div class="card">
+          <div class="card-body">
+           
+            <span class="d-flex">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Middle Level</label>
+              </div>   
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="padding-right: 0; padding-left: 0;">
+        <div class="card">
+        <div class="card-body">
+
+          <span class="d-flex">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Lower Level</label>
+            </div>  
+          </span>
+        </div>
+      </div>
+    </div>
+      <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+        <div class="card-body">
+
+          <span class="d-flex">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Lower Level</label>
+            </div> 
+
+          </span>
+        </div>
+      </div>
+    </div>
+      <div class="col" style="padding-right: 0; padding-left: 0;"><div class="card">
+        <div class="card-body">
+
+          <span class="d-flex">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Water Inlet</label>
+            </div> 
+          </span>
+        </div>
+      </div>
+    </div>
+      <div class="col" style="padding-right: 0; padding-left: 0;">
+        <div class="card">
+        <div class="card-body">
+
+          <span class="d-flex">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Water Inlet</label>
+            </div> 
+          </span>
+        </div>
+      </div>
+    </div>
+      </div>
+      <div class="row justify-content-center">
+        
+        <div class="col" style="padding-left: 5em; padding-right: 5em;">
+          <div class="card">
+            <div class="card-body">
+          <span class="d-flex">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Dry Pump</label>
+            </div> 
+          </span>
+          </div>
+          </div>
+        </div>
+
+      </div>
+     
+      <div class="row row-cols-2" style="padding-top:0.2em;" >
+        <div class="col">
+          <button id="clralltkn" name="clralltkn"   class="btn btn-warning " type="button" style="width:100%;">Manual_ON/OFF</button>
+       
+        </div>
+        <div class="col">
+          <a  style="color: white;"><button   class="btn btn-danger" type="button" style="width: 100%;">Exit</button></a>
+       
+        </div>
+        </div>
+      
+    </div>
+</div>
+    
+<script>
+  window.addEventListener("load", () => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+      .register("waterservice-worker.js")
+      .then((registration) => console.log("yoo, Service worker registered"))
+      .catch((error) => console.log("Service worker not registered", error));
+      
+    }
+  });
+  </script>
+    
+    <script src="./js/bs502.js"></script>
+     </body>
+</html>
+
+<script>
+  const serialLEDController = new SerialLEDController();
+  const connect = document.getElementById('connect-to-serial');
+  const getSerialMessages = document.getElementById('get-serial-messages');
+  const messageForm = document.getElementById('message-form');
+  const messageInput = document.getElementById('message-input');
+  const submitButton = document.getElementById('submit-button');
+  const serialMessagesContainer = document.getElementById('serial-messages-container');
+
+  connect.addEventListener('pointerdown', () => {
+    serialLEDController.init();
+
+    serialMessagesContainer.removeAttribute('disabled');
+    messageInput.removeAttribute('disabled');
+    submitButton.removeAttribute('disabled');
+  });
+
+  messageForm.addEventListener('submit', event => {
+    event.preventDefault();
+    serialLEDController.write(event.target.firstElementChild.value);
+    getSerialMessage();
+  });
+
+  getSerialMessages.addEventListener('pointerdown', async () => {
+    getSerialMessage();
+  });
+
+  async function getSerialMessage() {
+    serialMessagesContainer.innerText += await serialLEDController.read() + '\n';
+  }
+
+</script>
