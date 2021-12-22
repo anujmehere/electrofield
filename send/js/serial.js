@@ -43,3 +43,17 @@ class SerialLEDController {
     }
 }
 
+var datetime
+function senddate() {
+    datetime = document.getElementById("date")
+    document.getElementById("tkn1").value=0;
+    document.getElementById("tkn2").value=0;
+    document.getElementById("tkn3").value=0;
+    document.getElementById("tkn4").value=0;
+
+    document.getElementById("tkn5").value=0;
+    document.getElementById("tkn6").value=0;
+    document.getElementById("tkn7").value=0;
+    document.getElementById("tkn8").value=0;
+}
+
