@@ -26,7 +26,7 @@
     document.querySelector('button').addEventListener('click', async event => {
         navigator.bluetooth.requestDevice({
             acceptAllDevices: true,
-            optionalServices: ['4fafc201-1fb5-459e-8fcc-c5c9c331914b']
+            //optionalServices: ['4fafc201-1fb5-459e-8fcc-c5c9c331914b']
         })
         .then(device => { 
             Log("connecting to " + device.name);
@@ -35,11 +35,11 @@
         })
         .then(server => {
             // Getting Service…
-            return server.getPrimaryService("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
+            //return server.getPrimaryService("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
         })
         .then(service => {
             // Getting Characteristic…
-            return service.getCharacteristic("beb5483e-36e1-4688-b7f5-ea07361b26a8");
+           // return service.getCharacteristic("beb5483e-36e1-4688-b7f5-ea07361b26a8");
         })
         .then(characteristic => {
             // Reading value
