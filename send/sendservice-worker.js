@@ -1,4 +1,4 @@
-const CACHE_NAME = "send-1";
+const CACHE_NAME = "ahuconfigapp-1";
 // Customize this with a different URL if needed.
 const appShellFiles = [
   './send.html',

@@ -1,6 +1,6 @@
 {
-    "name": "Bluetooth Send Serial Data",
-    "short_name": "Send Serial Data",
+    "name": "AHU Config App",
+    "short_name": "AHU Config",
     "start_url": "/electrofield/send/sendlogin.html",
     "display": "standalone",
     "background_color": "#182034",
