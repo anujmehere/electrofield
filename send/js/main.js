@@ -56,16 +56,14 @@ const send = (data) => {
 //movetoken function
 function movetoken()
 {
-  document.getElementById("tkn1").value=document.getElementById("tkn2").value;
-  document.getElementById("tkn2").value=document.getElementById("tkn3").value;
-  document.getElementById("tkn3").value=document.getElementById("tkn4").value;
-  document.getElementById("tkn4").value=document.getElementById("tkn5").value;
-  document.getElementById("tkn5").value=document.getElementById("tkn6").value;
-  document.getElementById("tkn6").value=document.getElementById("tkn7").value;
-  document.getElementById("tkn7").value=document.getElementById("tkn8").value;
-  
-  document.getElementById("tkn8").value=document.getElementById("input").value;
-  
+  t=document.getElementById("time").value;
+  b=document.getElementById("band").value;
+  d=document.getElementById("delay").value;
+  c=document.getElementById("crttime").value;
+  on=document.getElementById("ontime").value;
+  off=document.getElementById("offtime").value;
+  document.getElementById("sendstr").value=t+b+d+c+on+off;
+
 }
 
 // Bind event listeners to the UI elements.

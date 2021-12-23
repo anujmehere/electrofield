@@ -57,7 +57,7 @@
                   
                   
                   <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="temp">Temp</label></button>
-                  <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="temp" type="number" step="0.5" value="0.0">
+                  <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="temp" type="number" step="0.5" value="0.0" >
                  </span>
                  </div>
                  <div class="col">
@@ -162,7 +162,7 @@
            </div>
            <form id="send-form" class="send-form" style="background-color: white;">
 
-            <input id="input" type="text" aria-label="Input" autocomplete="off" placeholder="" readonly>
+            <input id="sendstr" type="text" aria-label="Input" autocomplete="off" value="0" placeholder="temp-band-delay-crttime-ontime-offtime" onfocus="movetoken()" readonly>
 
             <button type="submit" aria-label="Send">
                 <i class="material-icons">send</i>
