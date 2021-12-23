@@ -19,78 +19,85 @@
     <script src="./js/index.js"></script>
     <link rel="manifest" href="./sendmanifest.json">
 </head>
+<div class="toolbar border-bottom shadow-sm" style="background-color: aqua; ">
+
+  <div id="device-name" class="name"><img src="./images/icon.png" style="padding-left: 1em;padding-right: 1em; height: 32px; width: 65px;"> AHU Config App</div>
+
+  <div class="buttons">
+
+      <button id="connect" type="button" aria-label="Connect">
+          <i class="material-icons">bluetooth_connected</i>
+      </button>
+
+      <button id="disconnect" type="button" aria-label="Disconnect">
+          <i class="material-icons">bluetooth_disabled</i>
+      </button>
+
+  </div>
+
+</div>
 
 <body style="background-color: rgb(155, 240, 107);">
-    
-    <div class="d-flex flex-column flex-md-row align-items-left p-3 px-md-4 mb-3 bg-blue border-bottom shadow-sm" style="background-color: aqua;">
-      <span class="d-flex">  
-      <img src="./images/icon.png" style="padding-left: 1em;padding-right: 1em; height: 40px; width: 70px;"> <h5 >AHU Config App</h5>
-      </span>
-
-       
-
-        
-    
-    </div>
-    
-      
-       
-      
-      
     <div class="container">
-      <div class="d-flex flex-column flex-md-row align-items-centre  p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" >
-        
-        
-            
-        <a href="#" class="btn btn-primary  " >Manual ON/OFF</a>
- 
-         
-     
-     </div>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-      <div class="form-check form-switch"  style="padding-left: 4em;">
-          <input class="form-check-input" type="checkbox" onclick="togglediv('bluetooth')" role="switch" id="connect" >
-          <label class="form-check-label" for="flexSwitchCheckDefault">Bluetooth</label>
-        </div>
-        <script>
-          document.getElementById('connect').id = 'disconnect';
-          document.getElementById('disconnect').id = 'connect';
-
-        </script>
-        
-
-       
-        <div class="port form-check form-switch  .d-sm-none .d-md-block"  style="padding-left:4em; padding-right: 1em;">
-          <input class="form-check-input" role="switch" id="flexSwitchCheckDefault" type="checkbox" onclick="togglesdiv('item','port')">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Port</label>
-          
-        </div>
-        <!--Device Type-->  
-    </nav>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
       Hey <label id="dtype" value="0" readonly><div id="terminal" class="terminal"></div>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div> 
-    <br>
-         
-          
-            <div class="col">
+    <div class="col">
               <div class="card" style="background-color: gold;">
+                
+                
                 <div class="card-body">
                   <h5 class="card-title" >Set Temperature</h5>
-                  <span class="d-flex"><h5 class="card-title" style="padding-left: 1em; padding-right: 2em;">Temperature</h5>
-                  <input  class="form-control me-2" style="max-width: 20em;" type="number" step="0.5" value="0.0">
+                  <div class="row row-cols-2">
+                  <div class="col">
+                  
+                  
+                  <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="temp">Temp</label></button>
+                  <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="temp" type="number" step="0.5" value="0.0">
                  </span>
+                 </div>
+                 <div class="col">
+                  <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="temp">Band</label></button>
+                    <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="temp" type="number" step="0.5" value="0.0">
+                   </span>
+
+                 </div>
                   
                 </div>
               </div>
             </div>
-            <br>
+            
+            <div class="card" style="background-color: gold;">
+                
+                
+              <div class="card-body">
+                
+                <div class="row row-cols-2">
+                <div class="col">
+                
+                
+                <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="temp">Delay</label></button>
+                <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="temp" type="number" step="1" max="60" min="0" value="0">
+               </span>
+               </div>
+               <div class="col">
+                <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="temp">CurrentTime</label></button>
+                  <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;"  type="datetime-local" >
+                 </span>
+
+               </div>
+                
+              </div>
+            </div>
+          </div>
             <div class="col">
               <div class="card" style="background-color: gold;">
                 <div class="card-body">
-                  <h5 class="card-title">Set Schedule Start/Stop</h5>
-                 <span class="d-flex"><h5 class="card-title" style="padding-right: 3em; padding-left: 1em;">Start Time</h5> <input
+                  <h5 class="card-title">Schedule</h5>
+                  <div class="row row-cols-2">
+                    <div class="col">
+                <input
                   class="form-control me-2"
                   
                   type="time"
@@ -102,9 +109,10 @@
                     align-self: center;
                     background-color: rgb(255, 255, 255);
                   "
-                /></span>
-                <br>
-                <span class="d-flex"><h5 class="card-title" style="padding-right: 3em; padding-left: 1em;">Stop Time</h5>
+                />
+                </div>
+                <div class="col">
+                
                 <input
                   class="form-control me-2"
                   id="sm1on"
@@ -114,15 +122,26 @@
                     min-width: 3em;
                     max-width: 20em;
                     text-align: end;
-                    
+                    align-self: center;
                     background-color: rgb(255, 255, 255);
                   "
                 />
-                </span>
+                </div>
+                
                   
                 </div>
               </div>
             </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row align-items-centre  p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" >
+        
+        
+            
+              <a href="#" class="btn btn-primary  " >Manual ON/OFF</a>
+       
+               
+           
+           </div>
           
           </div>
     
@@ -142,3 +161,90 @@
       }
     });
     </script>
+
+<style>
+  *:focus {
+  outline: none; }
+
+html, body, .app {
+  height: 100%;
+  max-height: 100%;
+  min-height: 100%; }
+
+body {
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+
+.app {
+  display: flex;
+  flex-direction: column; }
+
+button {
+  background: none;
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  margin: 0;
+  padding: 12px;
+  transition: background 0.3s, color 0.3s;
+  user-select: none; }
+  button:active {
+    background: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.54); }
+  button i.material-icons {
+    vertical-align: middle; }
+
+.toolbar {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0; }
+  .toolbar .name {
+    flex-grow: 1;
+    padding: 0 8px;
+    user-select: none; }
+  .toolbar .buttons {
+    flex-shrink: 0; }
+    .toolbar .buttons button {
+      float: left; }
+
+.terminal {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-width: 1px 0;
+  flex-grow: 1;
+  overflow: auto;
+  padding: 4px 0; }
+  .terminal div {
+    color: #9E9E9E;
+    line-height: 1;
+    padding: 4px 8px;
+    word-break: break-word; }
+    .terminal div.out {
+      color: #F44336; }
+    .terminal div.in {
+      color: #2196F3; }
+
+.send-form {
+  display: flex;
+  flex-shrink: 0; }
+  .send-form input {
+    background: none;
+    border: none;
+    color: rgba(0, 0, 0, 0.87);
+    flex-grow: 1;
+    font: normal 16px/1.5 'Roboto Mono', monospace;
+    padding: 0 8px; }
+    .send-form input::placeholder {
+      color: rgba(0, 0, 0, 0.54); }
+  .send-form button {
+    flex-shrink: 0; }
+</style>
+
+
+
+
+  
+  
+  

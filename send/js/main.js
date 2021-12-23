@@ -7,9 +7,9 @@ const sendForm = document.getElementById('send-form');
 const inputField = document.getElementById('input');
 
 // Helpers.
-const defaultDeviceName = 'Terminal';
+const defaultDeviceName = 'AHU Config App';
 const terminalAutoScrollingLimit = terminalContainer.offsetHeight / 2;
-let isTerminalAutoScrolling = true;
+let isTerminalAutoScrolling = false;
 
 const scrollElement = (element) => {
   const scrollTop = element.scrollHeight - element.offsetHeight;
