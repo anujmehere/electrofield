@@ -9,7 +9,7 @@ const inputField = document.getElementById('input');
 // Helpers.
 const defaultDeviceName = 'AHU Config App';
 const terminalAutoScrollingLimit = terminalContainer.offsetHeight / 2;
-let isTerminalAutoScrolling = false;
+let isTerminalAutoScrolling = true;
 
 const scrollElement = (element) => {
   const scrollTop = element.scrollHeight - element.offsetHeight;
