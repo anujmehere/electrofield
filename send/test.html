@@ -1,48 +1,100 @@
+
+
+<p>This sample illustrates the use of the Web Bluetooth API to get a list of
+Bluetooth devices that the website has been granted permission to use by the
+user. You may want to check out the sample.</p>
+
+<button id="getBluetoothDevices">Get Bluetooth Devices</button>
+<button id="requestBluetoothDevice">Request Bluetooth Device</button>
+
+<h3>Live Output</h3>
+<div id="output" class="output">
+  <div id="content">{{ include.initial_output_content }}</div>
+  <div id="status"></div>
+  <pre id="log"></pre>
+</div>
+
+
 <script>
-function onGetBluetoothDevicesButtonClick() {
-    log('Getting existing permitted Bluetooth devices...');
-    navigator.bluetooth.getDevices()
-    .then(devices => {
-      log('> Got ' + devices.length + ' Bluetooth devices.');
-      for (const device of devices) {
-        log('  > ' + device.name + ' (' + device.id + ')');
+    log = ChromeSamples.log;
+  
+    function isWebBluetoothEnabled() {
+      if (navigator.bluetooth) {
+        return true;
+      } else {
+        ChromeSamples.setStatus('Web Bluetooth API is not available.\n' +
+            'Please make sure the "Experimental Web Platform features" flag is enabled.');
+        return false;
       }
-    })
-    .catch(error => {
-      log('Argh! ' + error);
-    });
-  }
-  
-  function onRequestBluetoothDeviceButtonClick() {
-    log('Requesting any Bluetooth device...');
-    navigator.bluetooth.requestDevice({
-   // filters: [...] <- Prefer filters to save energy & show relevant devices.
-      acceptAllDevices: true
-    })
-    .then(device => {
-      log('> Requested ' + device.name + ' (' + device.id + ')');
-    })
-    .catch(error => {
-      log('Argh! ' + error);
-    });
-  }
-  </script>
-  <button id="getBluetoothDevices">Get Bluetooth Devices</button>
-  <button id="requestBluetoothDevice">Request Bluetooth Device</button>
-  
-  
-  {% include output_helper.html %}
-
-{% include js_snippet.html filename='./js/get-devices.js' %}
-
-{% include_relative _includes/utils.html %}
-  <script>
-    if (isWebBluetoothEnabled()) {
-      document.querySelector('#getBluetoothDevices').addEventListener('click', function() {
-          onGetBluetoothDevicesButtonClick();
-      });
-      document.querySelector('#requestBluetoothDevice').addEventListener('click', function() {
-          onRequestBluetoothDeviceButtonClick();
-      });
     }
+  </script>
+
+<script>
+  if (isWebBluetoothEnabled()) {
+    document.querySelector('#getBluetoothDevices').addEventListener('click', function() {
+        onGetBluetoothDevicesButtonClick();
+    });
+    document.querySelector('#requestBluetoothDevice').addEventListener('click', function() {
+        onRequestBluetoothDeviceButtonClick();
+    });
+  }
+</script>
+
+<script>
+    function onGetBluetoothDevicesButtonClick() {
+  log('Getting existing permitted Bluetooth devices...');
+  navigator.bluetooth.getDevices()
+  .then(devices => {
+    log('> Got ' + devices.length + ' Bluetooth devices.');
+    for (const device of devices) {
+      log('  > ' + device.name + ' (' + device.id + ')');
+    }
+  })
+  .catch(error => {
+    log('Argh! ' + error);
+  });
+}
+
+function onRequestBluetoothDeviceButtonClick() {
+  log('Requesting any Bluetooth device...');
+  navigator.bluetooth.requestDevice({
+ // filters: [...] <- Prefer filters to save energy & show relevant devices.
+    acceptAllDevices: true
+  })
+  .then(device => {
+    log('> Requested ' + device.name + ' (' + device.id + ')');
+  })
+  .catch(error => {
+    log('Argh! ' + error);
+  });
+}
+</script>
+
+
+<script>
+    var ChromeSamples = {
+      log: function() {
+        var line = Array.prototype.slice.call(arguments).map(function(argument) {
+          return typeof argument === 'string' ? argument : JSON.stringify(argument);
+        }).join(' ');
+  
+        document.querySelector('#log').textContent += line + '\n';
+      },
+  
+      clearLog: function() {
+        document.querySelector('#log').textContent = '';
+      },
+  
+      setStatus: function(status) {
+        document.querySelector('#status').textContent = status;
+      },
+  
+      setContent: function(newContent) {
+        var content = document.querySelector('#content');
+        while(content.hasChildNodes()) {
+          content.removeChild(content.lastChild);
+        }
+        content.appendChild(newContent);
+      }
+    };
   </script>
