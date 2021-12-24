@@ -56,13 +56,13 @@ const send = (data) => {
 //movetoken function
 function movetoken()
 {
-  t=document.getElementById("time").value;
-  b=document.getElementById("band").value;
-  d=document.getElementById("delay").value;
-  c=document.getElementById("crttime").value;
-  on=document.getElementById("ontime").value;
-  off=document.getElementById("offtime").value;
-  document.getElementById("sendstr").value=t+b+d+c+on+off;
+  // t=document.getElementById("time").value;
+  // b=document.getElementById("band").value;
+  // d=document.getElementById("delay").value;
+  // c=document.getElementById("currentDateTime").value;
+  // on=document.getElementById("ontime").value;
+  // off=document.getElementById("offtime").value;
+  // document.getElementById("sendstr").value=t+b+d+c+on+off;
 
 }
 

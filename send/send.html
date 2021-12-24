@@ -42,10 +42,11 @@
 
 <body style="background-color: rgb(155, 240, 107);">
     <div class="container">
-    <div class="alert alert-warning alert-dismissible fade show" style="background-color: rgb(155, 240, 107); outline: rgb(155, 240, 107);" role="alert">
+      <p class="marquee"><div id="terminal" class="terminal"></div></p>
+    <!-- <div class="alert alert-warning alert-dismissible fade show" style="background-color: rgb(155, 240, 107); outline: rgb(155, 240, 107);" role="alert">
       <div id="terminal" class="terminal"></div>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div> 
+    </div>  -->
     <div class="col">
               <div class="card" style="background-color: gold;">
                 
@@ -62,7 +63,7 @@
                  </div>
                  <div class="col">
                   <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="band">Band</label></button>
-                    <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="band" type="number" step="0.5" value="0.0">
+                    <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="band" type="number" step="1" value="0.0">
                    </span>
 
                  </div>
@@ -85,7 +86,7 @@
                </span>
                </div>
                <div class="col">
-                <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="crttime">Time</label></button>
+                <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="currentDateTime">Time</label></button>
                   <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="currentDateTime" type="text" >
                  </span>
 
@@ -161,8 +162,8 @@
            
            </div>
            <form id="send-form" class="send-form" style="background-color: white;">
-
-            <input id="sendstr" type="text" aria-label="Input" autocomplete="off" value="0" placeholder="temp-band-delay-crttime-ontime-offtime" onfocus="movetoken()" readonly>
+                
+            <input id="sendstr" type="text"   placeholder="temp-band-delay-crttime-ontime-offtime" >
 
             <button type="submit" aria-label="Send">
                 <i class="material-icons">send</i>
@@ -190,13 +191,26 @@
     </script>
 
 
-<br><br>
+
 <script>
   var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 var dateTime = date+' '+time;
   document.getElementById("currentDateTime").value = dateTime;
+
+  
+  var t=document.getElementById("temp").value;
+  var b=document.getElementById("band").value;
+  var d=document.getElementById("delay").value;
+  var c=document.getElementById("currentDateTime").value;
+  var on=document.getElementById("ontime").value;
+  var off=document.getElementById("offtime").value;
+  var message= t+'-'+b+'-'+d+'-'+c+'-'+on+'-'+off;
+  document.getElementById('sendstr').value=message;
+  console.log(message);
+
+
 </script>
 
 
