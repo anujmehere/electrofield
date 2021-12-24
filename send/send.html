@@ -18,13 +18,31 @@
     <script src="./js/index.js"></script>
     <link rel="manifest" href="./sendmanifest.json">
 </head>
+<script>
+  // Add a global error event listener early on in the page load, to help ensure that browsers
+  // which don't support specific functionality still end up displaying a meaningful message.
+  window.addEventListener('error', function(error) {
+    if (ChromeSamples && ChromeSamples.setStatus) {
+      console.error(error);
+      ChromeSamples.setStatus(error.message + ' (Your browser may not support this feature.)');
+      error.preventDefault();
+    }
+  });
+</script>
+
+<script>
+  if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+</script>
+
 <div class="toolbar border-bottom p-2 shadow-sm" style="background-color: aqua; ">
 
   <img src="./images/icon.png" style="padding-left: 1em;padding-right: 1em; height: 32px; width: 65px;"><div id="device-name" class="name"> AHU Config App</div>
 
   <div class="buttons">
 
-      <button id="connect" type="button" aria-label="Connect">
+      <button id="scan" type="button" aria-label="Connect">
           <i class="material-icons">bluetooth_connected</i>
       </button>
 
@@ -42,7 +60,12 @@
 
 <body style="background-color: rgb(155, 240, 107);">
     <div class="container">
-      <p class="marquee"><div id="terminal" class="terminal"></div></p>
+      <p class="marquee">
+        <div id="output" class="output">
+        <div id="content"></div>
+        <div id="status"></div>
+        <pre id="log"></pre>
+      </div></p>
     <!-- <div class="alert alert-warning alert-dismissible fade show" style="background-color: rgb(155, 240, 107); outline: rgb(155, 240, 107);" role="alert">
       <div id="terminal" class="terminal"></div>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -175,12 +198,7 @@
     
 </body>
 </html>
-<script src="./js/serial.js"></script>
-            
-      
-  <script src="./js/BluetoothTerminal.js"></script>
-  <script src="./js/main.js"></script>
-  <script src="./js/companion.js" data-service-worker="sw.js"></script>
+
   
   <script>
     window.addEventListener("load", () => {
@@ -212,6 +230,140 @@ var dateTime = date+' '+time;
 
 
 </script>
+
+<script>
+  if (/Chrome\/(\d+\.\d+.\d+.\d+)/.test(navigator.userAgent)){
+    // Let's log a warning if the sample is not supposed to execute on this
+    // version of Chrome.
+    if (55 > parseInt(RegExp.$1)) {
+      ChromeSamples.setStatus('Warning! Keep in mind this sample has been tested with Chrome ' + 55 + '.');
+    }
+  }
+</script>
+
+<script>var bluetoothDevice;
+
+  async function onScanButtonClick() {
+      acceptAllDevices: true
+  //   let options = {filters: []};
+  
+  //   let filterService = document.querySelector('#service').value;
+  //   if (filterService.startsWith('0x')) {
+  //     filterService = parseInt(filterService);
+  //   }
+  //   if (filterService) {
+  //     options.filters.push({services: [filterService]});
+  //   }
+  
+  //   let filterName = document.querySelector('#name').value;
+  //   if (filterName) {
+  //     options.filters.push({name: filterName});
+  //   }
+  
+  //   let filterNamePrefix = document.querySelector('#namePrefix').value;
+  //   if (filterNamePrefix) {
+  //     options.filters.push({namePrefix: filterNamePrefix});
+  //   }
+  
+    bluetoothDevice = null;
+    try {
+      log('Requesting Bluetooth Device...');
+      bluetoothDevice = await navigator.bluetooth.requestDevice({acceptAllDevices: true});
+      bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
+      connect();
+    } catch(error) {
+      log('Argh! ' + error);
+    }
+  }
+  
+  async function connect() {
+    log('Connecting to Bluetooth Device...');
+    await bluetoothDevice.gatt.connect();
+    log('> Bluetooth Device connected');
+  }
+  
+  function onDisconnectButtonClick() {
+    if (!bluetoothDevice) {
+      return;
+    }
+    log('Disconnecting from Bluetooth Device...');
+    if (bluetoothDevice.gatt.connected) {
+      bluetoothDevice.gatt.disconnect();
+    } else {
+      log('> Bluetooth Device is already disconnected');
+    }
+  }
+  
+  function onDisconnected(event) {
+    // Object event.target is Bluetooth Device getting disconnected.
+    log('> Bluetooth Device disconnected');
+  }
+  
+  function onReconnectButtonClick() {
+    if (!bluetoothDevice) {
+      return;
+    }
+    if (bluetoothDevice.gatt.connected) {
+      log('> Bluetooth Device is already connected');
+      return;
+    }
+    try {
+      connect();
+    } catch(error) {
+      log('Argh! ' + error);
+    }
+  }
+  </script>
+      
+    
+  
+    
+      
+    
+  
+  
+  
+  <script>
+    document.querySelector('#scan').addEventListener('click', function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+  
+      if (isWebBluetoothEnabled()) {
+        ChromeSamples.clearLog();
+        onScanButtonClick();
+      }
+    });
+    document.querySelector('#disconnect').addEventListener('click', function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+  
+      if (isWebBluetoothEnabled()) {
+        onDisconnectButtonClick();
+      }
+    });
+    document.querySelector('#reconnect').addEventListener('click', function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+  
+      if (isWebBluetoothEnabled()) {
+        onReconnectButtonClick();
+      }
+    });
+  </script>
+  
+  <script>
+    log = ChromeSamples.log;
+  
+    function isWebBluetoothEnabled() {
+      if (navigator.bluetooth) {
+        return true;
+      } else {
+        ChromeSamples.setStatus('Web Bluetooth API is not available.\n' +
+            'Please make sure the "Experimental Web Platform features" flag is enabled.');
+        return false;
+      }
+    }
+  </script>
 
 
 
