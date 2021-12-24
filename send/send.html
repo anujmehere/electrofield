@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./css/send.css">
     <script src="./js/index.js"></script>
+    <script src="./js/popup.js"></script>
     <link rel="manifest" href="./sendmanifest.json">
 </head>
 <script>
@@ -147,15 +148,17 @@
                   <h5 class="card-title" >Set Temperature</h5>
                   <div class="row row-cols-2">
                   <div class="col">
+                    
+                    
                   
                   
                   <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="temp">Temp</label></button>
-                  <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="temp" type="number" step="0.5" value="0.0" >
+                  <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="temp" type="number" step="0.5" value="0.0"  onchange="tempclicked(value)">
                  </span>
                  </div>
                  <div class="col">
                   <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="band">Band</label></button>
-                    <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="band" type="number" step="1" value="0.0">
+                    <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="band" type="number" step="1" value="0.0" onchange="bandclicked(value)">
                    </span>
 
                  </div>
@@ -174,7 +177,7 @@
                 
                 
                 <span class="d-flex"><button type="button" class="btn btn-info btn-sm" style="min-width: 3em;"><label for="delay">Delay</label></button>
-                <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="delay" type="number" step="1" max="60" min="0" value="0">
+                <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="delay" type="number" step="1" max="60" min="0" value="0" onchange="delayclicked(value)">
                </span>
                </div>
                <div class="col">
@@ -195,7 +198,6 @@
                     <div class="col">
                 <input
                   class="form-control me-2"
-                  
                   type="time"
                   value="00:00:00"
                   id="ontime"
@@ -213,6 +215,7 @@
                 <input
                   class="form-control me-2"
                   id="offtime"
+                  
                   type="time"
                   value="00:00:00"
                   style="
@@ -255,7 +258,7 @@
            </div>
            <form id="send-form" class="send-form" style="background-color: white;">
                 
-            <input id="sendstr" type="text"   placeholder="temp-band-delay-crttime-ontime-offtime" >
+            <input id="sendstr" type="text" onfocus="sendstring()"  placeholder="temp-band-delay-crttime-ontime-offtime" >
 
             <button type="submit" aria-label="Send">
                 <i class="material-icons">send</i>
@@ -287,15 +290,7 @@ var dateTime = date+' '+time;
   document.getElementById("currentDateTime").value = dateTime;
 
   
-  var t=document.getElementById("temp").value;
-  var b=document.getElementById("band").value;
-  var d=document.getElementById("delay").value;
-  var c=document.getElementById("currentDateTime").value;
-  var on=document.getElementById("ontime").value;
-  var off=document.getElementById("offtime").value;
-  var message= t+'-'+b+'-'+d+'-'+c+'-'+on+'-'+off;
-  document.getElementById('sendstr').value=message;
-  console.log(message);
+  
 
 
 </script>
@@ -344,6 +339,15 @@ var dateTime = date+' '+time;
       log('Argh! ' + error);
     }
   }
+//////////////////////////////////////////////////////////
+  function senddata()
+  {
+  var data= document.getElementById('sendstr').value;  
+  {
+  bluetoothDevice.send(data).then(() => movetoken()).catch((error) => log('Argh!'+error));
+  };
+  }
+  ////////////////////////////////////////
   
   async function connect() {
     log('Connecting to Bluetooth Device...');
