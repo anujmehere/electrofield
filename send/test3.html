@@ -205,7 +205,7 @@ async function onScanButtonClick() {
   bluetoothDevice = null;
   try {
     log('Requesting Bluetooth Device...');
-    bluetoothDevice = await navigator.bluetooth.requestDevice(options);
+    bluetoothDevice = await navigator.bluetooth.requestDevice({acceptAllDevices: true});
     bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
     connect();
   } catch(error) {
