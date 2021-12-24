@@ -85,8 +85,8 @@
                </span>
                </div>
                <div class="col">
-                <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="crttime">CurrentTime</label></button>
-                  <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="crttime" type="datetime-local" >
+                <span class="d-flex"><button type="button" class="btn btn-info btn-sm"><label for="crttime">Time</label></button>
+                  <input  class="form-control me-2" style="max-width: 20em; padding-left: 1em; padding-right: 1em;" id="currentDateTime" type="text" >
                  </span>
 
                </div>
@@ -189,6 +189,15 @@
     });
     </script>
 
+
+<br><br>
+<script>
+  var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
+  document.getElementById("currentDateTime").value = dateTime;
+</script>
 
 
 
