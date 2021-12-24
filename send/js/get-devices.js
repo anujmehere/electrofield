@@ -1,4 +1,3 @@
-<script>
 function onGetBluetoothDevicesButtonClick() {
     log('Getting existing permitted Bluetooth devices...');
     navigator.bluetooth.getDevices()
@@ -26,23 +25,3 @@ function onGetBluetoothDevicesButtonClick() {
       log('Argh! ' + error);
     });
   }
-  </script>
-  <button id="getBluetoothDevices">Get Bluetooth Devices</button>
-  <button id="requestBluetoothDevice">Request Bluetooth Device</button>
-  
-  
-  {% include output_helper.html %}
-
-{% include js_snippet.html filename='./js/get-devices.js' %}
-
-{% include_relative _includes/utils.html %}
-  <script>
-    if (isWebBluetoothEnabled()) {
-      document.querySelector('#getBluetoothDevices').addEventListener('click', function() {
-          onGetBluetoothDevicesButtonClick();
-      });
-      document.querySelector('#requestBluetoothDevice').addEventListener('click', function() {
-          onRequestBluetoothDeviceButtonClick();
-      });
-    }
-  </script>
