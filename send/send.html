@@ -278,6 +278,16 @@
             </button>
 
         </form>
+<br>
+        <form id="send-form" class="send-form" style="background-color: white; position: relative;">
+                
+          <input id="test" type="text"   placeholder="test"  >
+
+          <button type="submit" onclick="sendtest()" aria-label="Send">
+              <i class="material-icons">send</i>
+          </button>
+
+      </form>
           
           </div>
     
@@ -361,6 +371,14 @@ var dateTime = date+' '+time;
   };
   }
   ////////////////////////////////////////
+  function sendtest()
+  {
+  var t= document.getElementById('test').value;  
+  {
+    bluetoothDevice.send(t).then(() => bluetoothDevice.send(t)).catch((error) => log('Argh!'+error));
+  };
+  }
+  ///////////////////////////////////////////////////
   
   async function connect() {
     log('Connecting to Bluetooth Device...');
