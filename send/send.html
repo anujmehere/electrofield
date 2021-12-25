@@ -271,9 +271,9 @@
            </div>
            <form id="send-form" class="send-form" style="background-color: white; position: relative;">
                 
-            <input id="sendstr" type="text" onfocus="sendstring()"  placeholder="temp-band-delay-crttime-ontime-offtime" >
+            <input id="sendstr" type="text" onfocus="sendstring()"  placeholder="temp-band-delay-crttime-ontime-offtime" readonly required >
 
-            <button type="submit" aria-label="Send">
+            <button type="submit" onclick="senddata()" aria-label="Send">
                 <i class="material-icons">send</i>
             </button>
 
