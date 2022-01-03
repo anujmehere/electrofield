@@ -26,7 +26,7 @@
         <div class="col-sm-6">
           <div class="card" style="height: 305px;">
             
-              
+            <div id="device-name" class="name">Terminal</div>
              
           </div>
         </div>
@@ -85,7 +85,9 @@
       
       <div class="card mb-3" style="height: 4em;">
         <div class="card-body">
-           TIME
+          <span id="time" style="font-weight: bolder; " > </span>
+
+
         </div>
         </div>
 
@@ -117,3 +119,15 @@
     }
   });
   </script>
+
+<script>
+  `use strict`;
+ function refreshTime() {
+   const timeDisplay = document.getElementById("time");
+   const dateString = new Date().toLocaleString();
+   const formattedString = dateString.replace(", ", " - ");
+   timeDisplay.textContent = formattedString;
+ }
+   setInterval(refreshTime, 1000);
+ 
+ </script>
