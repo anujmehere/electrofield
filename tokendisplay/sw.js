@@ -5,7 +5,6 @@ toolbox.precache([
   'js/BluetoothTerminal.js',
   'js/companion.js',
   'js/main.js',
-  'desktop.html',
 ]);
 
 toolbox.router.default = toolbox.networkFirst;

@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="./css/bs513.css">
+    
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="./css/normalize.css" rel="stylesheet">
     <link href="./css/styles.css" rel="stylesheet">
@@ -14,19 +20,54 @@
     <link rel="manifest" href="./manifest.json">
     <title>ELECTROFIELD TOKEN</title>
   </head>
-  <body style="background-color: crimson; ">
+  
+
+  <body style="background-color: crimson; " onload="myFunction()">
       <div class="container" >
-        <div class="card mb-3"  style="padding: 0;">
+        <!-- <div class="card mb-3"  style="padding: 0;">
             <div class="card-body" style="background-color: rgb(62, 204, 204)">
               <h5 class="card-title">ELECTROFIELD INFOTECH</h5>
+              <div class="buttons">
+
+                <button id="scan" type="button" aria-label="Connect">
+                    <i class="material-icons">bluetooth_connected</i>
+                </button>
+          
+                <button id="disconnect" type="button" aria-label="Disconnect">
+                    <i class="material-icons">bluetooth_disabled</i>
+                </button>
+                 <button id="reconnect" type="button" aria-label="Reconnect">
+                  <i class="material-icons">bluetooth_connect</i>
+              </button> 
+          
             </div>
+
+            </div>
+          </div> -->
+          <div class="toolbar border-bottom p-2 shadow-sm" style="background-color: rgb(62, 204, 204) ">
+
+            <img src="./images/icon.png" style="padding-left: 1em;padding-right: 1em; height: 32px; width: 65px;"><div id="device-name" class="name"> AHU Config App</div>
+          
+            <div class="buttons">
+          
+                <button id="connect" type="button" aria-label="Connect">
+                    <i class="material-icons">bluetooth_connected</i>
+                </button>
+          
+                <button id="disconnect" type="button" aria-label="Disconnect">
+                    <i class="material-icons">bluetooth_disabled</i>
+                </button>
+                
+          
+            </div>
+          
           </div>
     
     <div class="row row-cols-2">
         <div class="col-sm-6">
           <div class="card" style="height: 305px;">
             
-            <div id="device-name" class="name">Terminal</div>
+            <div id="terminal" class="terminal"></div>
              
           </div>
         </div>
@@ -112,10 +153,24 @@
 
   </body>
 </html>
+<script src="./js/serial.js"></script>
+            
+      
+            <script src="./js/BluetoothTerminal.js"></script>
+            <script src="./js/main.js"></script>
+            <script src="./js/companion.js" data-service-worker="sw.js"></script>
+            
+      
+      
+            
+      
+            <!--Connect Disconnect Button-->
+            <script src="./js/jquery1102.js"></script>
+      
 <script>
   window.addEventListener("load", () => {
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/electrofield/tokendisplay/service-worker.js");
+      navigator.serviceWorker.register("service-worker.js");
     }
   });
   </script>
