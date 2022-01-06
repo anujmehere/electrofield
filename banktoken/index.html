@@ -54,32 +54,58 @@
            
             <div class="container">
               <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-                  <div class="form-check form-switch"  style="padding-left: 4em;">
-                      <input class="form-check-input" type="checkbox" onclick="togglediv('bluetooth')" role="switch" id="connect" >
-                      <label class="form-check-label" for="flexSwitchCheckDefault">Bluetooth</label>
-                    </div>
-                    <script>
-                      document.getElementById('connect').id = 'disconnect';
-                      document.getElementById('disconnect').id = 'connect';
-      
-                    </script>
-                    <div class="form-check form-switch" style="padding-left: 4em;">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                      <label class="form-check-label" for="flexSwitchCheckDefault">Wifi</label>
-                    </div>
-      
-                   
-                    <div class="port form-check form-switch  .d-sm-none .d-md-block"  style="padding-left:4em; padding-right: 1em;">
-                      <input class="form-check-input" role="switch" id="flexSwitchCheckDefault" type="checkbox" onclick="togglesdiv('item','port')">
-                      <label class="form-check-label" for="flexSwitchCheckDefault">Port</label>
-                      <span class="slider" ></span>
-                    </div>
+                 
                     <!--Device Type-->  
                 </nav>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Connect
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connect</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-check form-switch"  style="padding-left: 4em;">
+          <input class="form-check-input" type="checkbox" onclick="togglediv('bluetooth')" data-bs-toggle="modal"  role="switch" id="connect" >
+          <label class="form-check-label" for="flexSwitchCheckDefault">Bluetooth</label>
+        </div>
+        <script>
+          document.getElementById('connect').id = 'disconnect';
+          document.getElementById('disconnect').id = 'connect';
+
+        </script>
+        <div class="form-check form-switch" style="padding-left: 4em;">
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Wifi</label>
+        </div>
+
+       
+        <div class="port form-check form-switch  .d-sm-none .d-md-block"  style="padding-left:4em; padding-right: 1em;">
+          <input class="form-check-input" role="switch" id="flexSwitchCheckDefault" type="checkbox" onclick="togglesdiv('item','port')">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Port</label>
+          <span class="slider" ></span>
+        </div>
+        <div id="terminal" class="terminal"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
                   Hey <label id="dtype" value="0" readonly><div id="terminal" class="terminal"></div>
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>  
+                </div>   -->
                 <div id="item" style="display: none;">
                   <nav>
                     <span class="d-flex" style="background-color: beige; padding: 1rem;">
